@@ -4,6 +4,7 @@
  */
 
 // set up data structures
+// ALL GLOBAL VARIABLES--ACCESSIBLE ANYWHERE
 window.streams = {};
 streams.home = [];
 streams.users = {};
@@ -15,8 +16,12 @@ window.users = Object.keys(streams.users);
 
 // utility function for adding tweets to our data structures
 var addTweet = function(newTweet){
+  // uses tweet object to access user
   var username = newTweet.user;
+  // adds tweet to user's array of tweets--key is user name, value is tweet string
+  // streams itself is an objectd
   streams.users[username].push(newTweet);
+  // push each tweet object into home array--contains all tweets
   streams.home.push(newTweet);
 };
 
@@ -39,6 +44,7 @@ var randomMessage = function(){
 
 // generate random tweets on a random schedule
 var generateRandomTweet = function(){
+  // tweet is an object that has keys: user, message, created_at
   var tweet = {};
   tweet.user = randomElement(users);
   tweet.message = randomMessage();
