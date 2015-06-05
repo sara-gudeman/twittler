@@ -11,7 +11,7 @@
 //  - display existing tweets on loading from newest to oldest
 //  - have a button that prints ONLY the newly added tweets
 // Issues facing:
-// - tweets are in reverse order we want pritned
+// - tweets are in reverse order we want printed
 // - making sure to access ONLY new tweets upon button click (and subsequent fcn call)
 
 // TO DO: create function that only accesses new tweets
@@ -33,14 +33,26 @@ function returnNewElements(currentArray, oldArray) {
   return newElements;
 }
 
-var archivedTweets = [];
-var newTweets = returnNewElements(streams.home, archivedTweets);
-console.log(newTweets);
-console.log(archivedTweets);
+// testing function
+// var archivedTweets = [];
+// var newTweets = returnNewElements(streams.home, archivedTweets);
+// console.log(newTweets);
+// console.log(archivedTweets);
 
+/*
+ * Return a new array with reversed values
+ * @param  {array} array [input array]
+ * @return {array}       [reversed copy of array]
+ */
 function reverseCopy(array) {
-  return array.slice();
+  var arrCopy = array.slice();
+  return arrCopy.reverse();
 }
+
+// testing function
+// var array = [1, 2, 3, 4, 5];
+// console.log(reverseCopy(array));
+// console.log(array);
 
 $(document).ready(function(){
   var $body = $('body');
@@ -48,8 +60,10 @@ $(document).ready(function(){
   var $container = $('<div class="container"></div>');
   $body.append($container);
   $container.append('<button>Refresh Tweets</button>');
+  var archivedTweets = [];
+  var newTweets = returnNewElements(streams.home, archivedTweets);
   var printTweet = function() {
-    $.each(streams.home, function(index, tweetObj) {
+    $.each(newTweets, function(index, tweetObj) {
       var $tweet = $('<div class="tweet"></div>');
       $tweet.text('@' + tweetObj.user + ': ' + tweetObj.message);
       $tweet.appendTo($container);
