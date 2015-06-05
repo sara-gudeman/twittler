@@ -14,6 +14,9 @@ $(document).ready(function(){
     $tweet.text('@' + tweetObj.user + ': ' + tweetObj.message);
     $tweet.appendTo($container);
   });
+  $('button').on('click', function(){
+    alert('I have been clicked!')
+  });
   // var index = streams.home.length - 1;
   // while(index >= 0){
   //   var tweet = streams.home[index];
