@@ -5,7 +5,9 @@ $.each(streams.home, function(index, value) {
 
 $(document).ready(function(){
   var $body = $('body');
-  $body.html('');
+  // setting up HTML structure
+  $body.append('<div class="container"></div>');
+  $('.container').append('<button>Refresh Tweets</button>');
 
   // var index = streams.home.length - 1;
   // while(index >= 0){
