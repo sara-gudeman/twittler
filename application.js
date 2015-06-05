@@ -9,13 +9,18 @@ $(document).ready(function(){
   var $container = $('<div class="container"></div>');
   $body.append($container);
   $container.append('<button>Refresh Tweets</button>');
-  $.each(streams.home, function(index, tweetObj) {
+  var printTweet = function() {
+    $.each(streams.home, function(index, tweetObj) {
     var $tweet = $('<div class="tweet"></div>');
     $tweet.text('@' + tweetObj.user + ': ' + tweetObj.message);
     $tweet.appendTo($container);
   });
+
+  };
   $('button').on('click', function(){
-    alert('I have been clicked!')
+    // need to create fcn that loads new tweets on click
+    // alert('I have been clicked!')
+    printTweet();
   });
   // var index = streams.home.length - 1;
   // while(index >= 0){
