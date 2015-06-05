@@ -1,7 +1,24 @@
-// NOTE: jQuery .each fcn takes in index first THEN value! Reverse of in vanilla JS
-// $.each(streams.home, function(index, value) {
-//   $('.container').append('<div>' + value + '</div>');
-// });
+// Twittler functionality
+// 1. show user new tweets
+// 2. display time stamps
+// 3. design interface
+// 4. allow user to click on username & see that user's timeline
+
+// 1. show user new tweets
+// what we have: existing set of tweets
+// what happens: new tweets are added to global var stream
+// what we want
+//  - display existing tweets on loading from newest to oldest
+//  - have a button that prints ONLY the newly added tweets
+// Issues facing:
+// - tweets are in reverse order we want pritned
+// - making sure to access ONLY new tweets upon button click (and subsequent fcn call)
+
+// TO DO: create function that only accesses new tweets
+
+function reverseCopy(array) {
+  return array.slice();
+}
 
 $(document).ready(function(){
   var $body = $('body');
@@ -11,11 +28,10 @@ $(document).ready(function(){
   $container.append('<button>Refresh Tweets</button>');
   var printTweet = function() {
     $.each(streams.home, function(index, tweetObj) {
-    var $tweet = $('<div class="tweet"></div>');
-    $tweet.text('@' + tweetObj.user + ': ' + tweetObj.message);
-    $tweet.appendTo($container);
-  });
-
+      var $tweet = $('<div class="tweet"></div>');
+      $tweet.text('@' + tweetObj.user + ': ' + tweetObj.message);
+      $tweet.appendTo($container);
+    });
   };
   $('button').on('click', function(){
     // need to create fcn that loads new tweets on click
@@ -31,3 +47,5 @@ $(document).ready(function(){
   //   index -= 1;
   // }
 });
+
+
