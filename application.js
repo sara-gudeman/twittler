@@ -16,6 +16,15 @@
 
 // TO DO: create function that only accesses new tweets
 
+/**
+ * Filter elements in new array not present in old array. Update old array with new elements.
+ * @param  {array} currentArray [array containing new elements]
+ * @param  {array} oldArray     [array of archived elements]
+ * @return {array}              [elements unique to new array]
+ */
+function returnNewElements(currentArray, oldArray) {
+}
+
 function reverseCopy(array) {
   return array.slice();
 }
