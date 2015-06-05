@@ -23,7 +23,20 @@
  * @return {array}              [elements unique to new array]
  */
 function returnNewElements(currentArray, oldArray) {
+  // use filter fcn to return only new elements
+  var newElements = currentArray.filter(function(element) {
+    return oldArray.indexOf(element) === -1;
+  });
+  // update old array to include new elements
+  Array.prototype.push.apply(oldArray, newElements);
+  // return new elements array
+  return newElements;
 }
+
+var archivedTweets = [];
+var newTweets = returnNewElements(streams.home, archivedTweets);
+console.log(newTweets);
+console.log(archivedTweets);
 
 function reverseCopy(array) {
   return array.slice();
