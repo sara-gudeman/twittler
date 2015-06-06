@@ -50,10 +50,15 @@ $(document).ready(function(){
   var $timeline = $('<div class="timeline"></div>');
   $body.append($container);
   $container.append($refresh, $timeline);
+  // creating array for already appended tweets
   var archivedTweets = [];
+  // printTweet function: 
+  // takes in current state of streams.home (including new tweets)
   var printTweet = function() {
+    // filters out already appened tweets
     var newTweets = returnNewElements(streams.home, archivedTweets);
     var reversedTweets = reverseCopy(newTweets);
+    // appends each new tweet to timeline
     $.each(newTweets, function(index, tweetObj) {
       var $tweet = $('<div class="tweet"></div>');
       $tweet.text('@' + tweetObj.user + ': ' + tweetObj.message + ' created at: ' + tweetObj.created_at);
