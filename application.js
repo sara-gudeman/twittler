@@ -60,6 +60,7 @@ $(document).ready(function(){
       $timeline.prepend($tweet);
     });
   };
+  printTweet();
   $('button').on('click', printTweet);
 });
 
