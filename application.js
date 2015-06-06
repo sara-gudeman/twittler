@@ -59,7 +59,10 @@ $(document).ready(function(){
       var $message = $('<span class="message"></span>');
       var $user = $('<span class = "user"></span>');
       var $date = $('<span class = "date"></span>');
-      $tweet.text('@' + tweetObj.user + ': ' + tweetObj.message + ' created at: ' + tweetObj.created_at);
+      $message.text(tweetObj.message);
+      $user.text('@' + tweetObj.user + ' ');
+      $date.text(tweetObj.created_at + ' ');
+      $tweet.append($user, $date, $message);
       $timeline.prepend($tweet);
     });
   };
