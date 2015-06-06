@@ -46,30 +46,21 @@ $(document).ready(function(){
   var $body = $('body');
   // setting up HTML structure
   var $container = $('<div class="container"></div>');
+  var $refresh = $('<div class="refresh"><button>Refresh</button></div>');
+  var $timeline = $('<div class="timeline"></div>');
   $body.append($container);
-  $container.append('<button>Refresh Tweets</button>');
+  $container.append($refresh, $timeline);
   var archivedTweets = [];
-  var newTweets = returnNewElements(streams.home, archivedTweets);
   var printTweet = function() {
+    var newTweets = returnNewElements(streams.home, archivedTweets);
+    var reversedTweets = reverseCopy(newTweets);
     $.each(newTweets, function(index, tweetObj) {
       var $tweet = $('<div class="tweet"></div>');
       $tweet.text('@' + tweetObj.user + ': ' + tweetObj.message);
-      $tweet.appendTo($container);
+      $timeline.prepend($tweet);
     });
   };
-  $('button').on('click', function(){
-    // need to create fcn that loads new tweets on click
-    // alert('I have been clicked!')
-    printTweet();
-  });
-  // var index = streams.home.length - 1;
-  // while(index >= 0){
-  //   var tweet = streams.home[index];
-  //   var $tweet = $('<div></div>');
-  //   $tweet.text('@' + tweet.user + ': ' + tweet.message);
-  //   $tweet.appendTo($body);
-  //   index -= 1;
-  // }
+  $('button').on('click', printTweet);
 });
 
 
