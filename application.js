@@ -56,6 +56,9 @@ $(document).ready(function(){
     var reversedTweets = reverseCopy(newTweets);
     $.each(newTweets, function(index, tweetObj) {
       var $tweet = $('<div class="tweet"></div>');
+      var $message = $('<span class="message"></span>');
+      var $user = $('<span class = "user"></span>');
+      var $date = $('<span class = "date"></span>');
       $tweet.text('@' + tweetObj.user + ': ' + tweetObj.message + ' created at: ' + tweetObj.created_at);
       $timeline.prepend($tweet);
     });
