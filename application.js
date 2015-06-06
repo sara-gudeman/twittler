@@ -33,26 +33,14 @@ function returnNewElements(currentArray, oldArray) {
   return newElements;
 }
 
-// testing function
-// var archivedTweets = [];
-// var newTweets = returnNewElements(streams.home, archivedTweets);
-// console.log(newTweets);
-// console.log(archivedTweets);
-
 /*
  * Return a new array with reversed values
  * @param  {array} array [input array]
  * @return {array}       [reversed copy of array]
  */
 function reverseCopy(array) {
-  var arrCopy = array.slice();
-  return arrCopy.reverse();
+  return array.slice().reverse();
 }
-
-// testing function
-// var array = [1, 2, 3, 4, 5];
-// console.log(reverseCopy(array));
-// console.log(array);
 
 $(document).ready(function(){
   var $body = $('body');
