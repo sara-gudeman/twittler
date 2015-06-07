@@ -43,17 +43,20 @@ function reverseCopy(array) {
 }
 
 $(document).ready(function(){
-  var $body = $('body');
   // setting up HTML structure
+  var $body = $('body');
   var $header = $('<header></header>');
-  $header.append('<h1>Twittler</h1>');
   var $main = $('<div class="container"></div>');
   var $refresh = $('<button name="refresh"></button>');
-  $refresh.text('Refresh');
   var $timeline = $('<div class="timeline"></div>');
+
+  $refresh.text('Refresh');
+  $header.append('<h1>Twittler</h1>');
   $body.append($header, $main);
   $main.append($refresh, $timeline);
+
   var archivedTweets = [];
+
   var printTweet = function() {
     var newTweets = returnNewElements(streams.home, archivedTweets);
     var reversedTweets = reverseCopy(newTweets);
@@ -62,13 +65,16 @@ $(document).ready(function(){
       var $message = $('<p class="message"></p>');
       var $user = $('<span class = "user"></span>');
       var $date = $('<span class = "date"></span>');
+
       $message.text(tweetObj.message);
       $user.text('@' + tweetObj.user + ' ');
       $date.text(tweetObj.created_at + ' ');
+
       $tweet.append($user, $date, $message);
       $timeline.prepend($tweet);
     });
   };
+
   printTweet();
   $('button').on('click', printTweet);
 });
