@@ -22,7 +22,7 @@
  * @param  {array} oldArray     [array of archived elements]
  * @return {array}              [elements unique to new array]
  */
-function returnNewElements(currentArray, oldArray) {
+var returnNewElements = function(currentArray, oldArray) {
   // use filter fcn to return only new elements
   var newElements = currentArray.filter(function(element) {
     return oldArray.indexOf(element) === -1;
@@ -38,7 +38,7 @@ function returnNewElements(currentArray, oldArray) {
  * @param  {array} array [input array]
  * @return {array}       [reversed copy of array]
  */
-function reverseCopy(array) {
+var reverseCopy = function(array) {
   return array.slice().reverse();
 }
 
