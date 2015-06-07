@@ -45,18 +45,21 @@ function reverseCopy(array) {
 $(document).ready(function(){
   var $body = $('body');
   // setting up HTML structure
-  var $container = $('<div class="container"></div>');
-  var $refresh = $('<div class="refresh"><button>Refresh</button></div>');
+  var $header = $('<header></header>');
+  $header.append('<h1>Twittler</h1>');
+  var $main = $('<div class="container"></div>');
+  var $refresh = $('<button name="refresh"></button>');
+  $refresh.text('Refresh');
   var $timeline = $('<div class="timeline"></div>');
-  $body.append($container);
-  $container.append($refresh, $timeline);
+  $body.append($header, $main);
+  $main.append($refresh, $timeline);
   var archivedTweets = [];
   var printTweet = function() {
     var newTweets = returnNewElements(streams.home, archivedTweets);
     var reversedTweets = reverseCopy(newTweets);
     $.each(newTweets, function(index, tweetObj) {
       var $tweet = $('<div class="tweet"></div>');
-      var $message = $('<span class="message"></span>');
+      var $message = $('<p class="message"></p>');
       var $user = $('<span class = "user"></span>');
       var $date = $('<span class = "date"></span>');
       $message.text(tweetObj.message);
