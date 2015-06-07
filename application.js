@@ -27,9 +27,6 @@ var returnNewElements = function(currentArray, oldArray) {
   var newElements = currentArray.filter(function(element) {
     return oldArray.indexOf(element) === -1;
   });
-  // update old array to include new elements
-  Array.prototype.push.apply(oldArray, newElements);
-  // return new elements array
   return newElements;
 }
 
@@ -58,6 +55,8 @@ $(document).ready(function(){
   var archivedTweets = [];
   var printTweet = function() {
     var newTweets = returnNewElements(streams.home, archivedTweets);
+    // update old array to include new elements
+    Array.prototype.push.apply(archivedTweets, newTweets);
     var reversedTweets = reverseCopy(newTweets);
     $.each(newTweets, function(index, tweetObj) {
       var $tweet = $('<div class="tweet"></div>');
