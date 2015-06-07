@@ -85,6 +85,12 @@ $(document).ready(function(){
 
   // NEXT STEPS: add back button functionality
 
+  $('.user').on('click', function(){
+    var whatIsThis = $(this);
+    var $userTweet = $(this.closest('.tweet'));
+    var username = $userTweet.data('tweetObj').user;
+    debugger;
+  });
 
 });
 
