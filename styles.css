@@ -26,6 +26,7 @@ time, mark, audio, video {
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {
+  width: 200;
   display: block;
 }
 body {
@@ -51,15 +52,68 @@ table {
 
 body {
 	background-color: #55acee;
+	font-size: 14px;
+	line-height: 18px;
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+header {
+	width: 100%;
+	background-color: #FFF;
+	padding: 1em;
+	margin: 0 0 1em 0;
+}
+
+h1 {
+	font-size: 1.5em;
 }
 
 .container {
 	width: 960px;
 	margin: 0 auto;
-}
-
-.timeline {
-	background-color: #fff;
+	margin-bottom: 1em;
+	background-color: #FFF;
+	border-style: solid;
+	border-color: #E1E8ED;
+	border-width: 1px;
 	border-radius: 5px;
 }
 
+.timeline {
+}
+
+.tweet {
+	padding: 9px 12px;
+}
+.tweet:nth-child(even){
+/* 	background-color: green; */
+	border-style: solid none;
+	border-width: 1px;
+	border-color: #E1E8ED;
+}
+
+button:focus {
+  outline: 0;
+}
+
+button[name=refresh]{
+  width: inherit;
+  border-width: inherit;
+  border-color: inherit;
+  border-style: none none solid none;
+  border-radius: 5px 5px 0 0;
+  font-size: inherit;
+  color: #66757F;
+  padding: .75em;
+  background-color: #F5F8FA;
+}
+
+button[name=refresh]:hover {
+	background-color: #E1E8ED;
+	color: #292F33;
+}
+
+button[name=refresh]:active {
+	font-weight: bold;
+	border-bottom-width: 3px;
+}
