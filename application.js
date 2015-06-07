@@ -56,7 +56,6 @@ $(document).ready(function(){
   $main.append($refresh, $timeline);
 
   var archivedTweets = [];
-
   var printTweet = function() {
     var newTweets = returnNewElements(streams.home, archivedTweets);
     var reversedTweets = reverseCopy(newTweets);
@@ -65,6 +64,8 @@ $(document).ready(function(){
       var $message = $('<p class="message"></p>');
       var $user = $('<span class = "user"></span>');
       var $date = $('<span class = "date"></span>');
+
+      $tweet.data('tweetObj', tweetObj);
 
       $message.text(tweetObj.message);
       $user.text('@' + tweetObj.user + ' ');
@@ -77,6 +78,14 @@ $(document).ready(function(){
 
   printTweet();
   $('button').on('click', printTweet);
+
+  // TO DO: SHOW USER TIMELINE
+  // add click events to each tweet's user name
+  // onclick hide all tweet's not by selected user
+
+  // NEXT STEPS: add back button functionality
+
+
 });
 
 
