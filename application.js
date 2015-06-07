@@ -53,18 +53,22 @@ $(document).ready(function(){
   $main.append($refresh, $timeline);
 
   var archivedTweets = [];
-  var printTweet = function() {
+
+  var newTweets = function() {
     var newTweets = returnNewElements(streams.home, archivedTweets);
-    // update old array to include new elements
     Array.prototype.push.apply(archivedTweets, newTweets);
-    var reversedTweets = reverseCopy(newTweets);
-    $.each(newTweets, function(index, tweetObj) {
+    return newTweets;
+  };
+
+  var printTweet = function(tweets) {
+    var reversedTweets = reverseCopy(tweets);
+    $.each(tweets, function(index, tweetObj) {
       var $tweet = $('<div class="tweet"></div>');
       var $message = $('<p class="message"></p>');
       var $user = $('<span class = "user"></span>');
       var $date = $('<span class = "date"></span>');
 
-      $tweet.data('tweetObj', tweetObj);
+      $tweet.data('username', tweetObj);
 
       $message.text(tweetObj.message);
       $user.text('@' + tweetObj.user + ' ');
@@ -75,22 +79,25 @@ $(document).ready(function(){
     });
   };
 
-  printTweet();
-  $('button').on('click', printTweet);
+  printTweet(newTweets());
+  $('button').on('click', function() {
+    printTweet(newTweets());
+  });
+
+  $('div[data$=mracus]').css('background-color', 'green');
 
   // TO DO: SHOW USER TIMELINE
   // add click events to each tweet's user name
   // onclick hide all tweet's not by selected user
 
-  // NEXT STEPS: add back button functionality
-
-  $('.user').on('click', function(){
-    var whatIsThis = $(this);
+  var userClicked = $('.user').on('click', function(){
+    // var whatIsThis = $(this);
     var $userTweet = $(this.closest('.tweet'));
-    var username = $userTweet.data('tweetObj').user;
     debugger;
+    var username = $userTweet.data('tweetObj').user;
   });
-
+  // NEXT STEPS: add show all button functionality
+  
 });
 
 
