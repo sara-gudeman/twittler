@@ -45,12 +45,15 @@ $(document).ready(function(){
   var $header = $('<header></header>');
   var $main = $('<div class="container"></div>');
   var $refresh = $('<button name="refresh"></button>');
+  var $homeBtn = $('<button name="home"></button>');
   var $timeline = $('<div class="timeline"></div>');
 
   $refresh.text('Refresh');
+  $homeBtn.text('Return to Timeline');
+  $homeBtn.hide();
   $header.append('<h1>Twittler</h1>');
   $body.append($header, $main);
-  $main.append($refresh, $timeline);
+  $main.append($refresh, $homeBtn, $timeline);
 
   var archivedTweets = [];
 
@@ -66,9 +69,10 @@ $(document).ready(function(){
       var $tweet = $('<div class="tweet"></div>');
       var $message = $('<p class="message"></p>');
       var $user = $('<span class = "user"></span>');
+      $user.addClass(tweetObj.user);
       var $date = $('<span class = "date"></span>');
 
-      $tweet.data('username', tweetObj);
+      $tweet.data('tweetObj', tweetObj);
 
       $message.text(tweetObj.message);
       $user.text('@' + tweetObj.user + ' ');
@@ -80,23 +84,24 @@ $(document).ready(function(){
   };
 
   printTweet(newTweets());
-  $('button').on('click', function() {
+  $refresh.on('click', function() {
     printTweet(newTweets());
   });
 
-  $('div[data$=mracus]').css('background-color', 'green');
-
-  // TO DO: SHOW USER TIMELINE
-  // add click events to each tweet's user name
-  // onclick hide all tweet's not by selected user
-
-  var userClicked = $('.user').on('click', function(){
-    // var whatIsThis = $(this);
+  $timeline.on('click', '.user', function() {
     var $userTweet = $(this.closest('.tweet'));
-    debugger;
     var username = $userTweet.data('tweetObj').user;
+    $homeBtn.show();
+    $refresh.hide();
+    $('div:not(:contains(' + username + '))').hide();
   });
-  // NEXT STEPS: add show all button functionality
+
+  $homeBtn.on('click', function() {
+    $('.tweet').show();
+    $homeBtn.hide();
+    $refresh.show();
+  });
+
   
 });
 
