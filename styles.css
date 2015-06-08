@@ -79,24 +79,25 @@ h1 {
 	border-radius: 5px;
 }
 
-.timeline {
-}
-
 .tweet {
 	padding: 9px 12px;
 }
+
 .tweet:nth-child(even){
-/* 	background-color: green; */
 	border-style: solid none;
 	border-width: 1px;
 	border-color: #E1E8ED;
+}
+
+.user {
+  font-weight: bold;
 }
 
 button:focus {
   outline: 0;
 }
 
-button[name=refresh]{
+button{
   width: inherit;
   border-width: inherit;
   border-color: inherit;
@@ -108,12 +109,12 @@ button[name=refresh]{
   background-color: #F5F8FA;
 }
 
-button[name=refresh]:hover {
+button:hover {
 	background-color: #E1E8ED;
 	color: #292F33;
 }
 
-button[name=refresh]:active {
+button:active {
 	font-weight: bold;
 	border-bottom-width: 3px;
 }

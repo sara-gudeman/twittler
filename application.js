@@ -39,6 +39,8 @@ var reverseCopy = function(array) {
   return array.slice().reverse();
 }
 
+// console.log(streams.users.mracus[0].created_at);
+
 $(document).ready(function(){
   // setting up HTML structure
   var $body = $('body');
@@ -69,14 +71,15 @@ $(document).ready(function(){
       var $tweet = $('<div class="tweet"></div>');
       var $message = $('<p class="message"></p>');
       var $user = $('<span class = "user"></span>');
-      $user.addClass(tweetObj.user);
       var $date = $('<span class = "date"></span>');
-
-      $tweet.data('tweetObj', tweetObj);
-
-      $message.text(tweetObj.message);
+      $user.addClass(tweetObj.user);
+      var date = tweetObj.created_at.toString();
+      var testDate = moment(date).isValid();
+      // var now = moment();
+      debugger;
       $user.text('@' + tweetObj.user + ' ');
       $date.text(tweetObj.created_at + ' ');
+      $message.text(tweetObj.message);
 
       $tweet.append($user, $date, $message);
       $timeline.prepend($tweet);
@@ -89,8 +92,7 @@ $(document).ready(function(){
   });
 
   $timeline.on('click', '.user', function() {
-    var $userTweet = $(this.closest('.tweet'));
-    var username = $userTweet.data('tweetObj').user;
+    var username = $(this).text();
     $homeBtn.show();
     $refresh.hide();
     $('div:not(:contains(' + username + '))').hide();
@@ -101,7 +103,6 @@ $(document).ready(function(){
     $homeBtn.hide();
     $refresh.show();
   });
-
   
 });
 
